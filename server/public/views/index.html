@@ -7,9 +7,13 @@
     <script type="text/javascript" src="scripts/client.js"></script>
     <link rel="stylesheet" href="/styles/bootstrap.min.css">
   </head>
-  <body ng-app="app">
-    <header class="jumbotron" ng-controller="firstController as fc">
+  <body ng-app="app" ng-controller="firstController as fc">
+    <header class="jumbotron">
       <h1 class="container">{{fc.message}} Angular Node Express Starter</h1>
     </header>
+    <div class="container">
+      <div>{{fc.animal.contact.phone.$t}}</div>
+      <img ng-src="{{fc.animal.media.photos.photo[2].$t}}" />
+    </div>
   </body>
 </html>
