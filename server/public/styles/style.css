@@ -1,0 +1,11 @@
+.container {
+  font-style: italic;
+  text-align: center;
+}
+
+.jumbotron {
+  background-color: black;
+  color: white;
+  letter-spacing: 20px;
+  -webkit-text-stroke: 1px gray;
+}

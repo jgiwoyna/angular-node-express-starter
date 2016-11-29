@@ -1,0 +1,12 @@
+<h1>Find a Cat!</h1>
+
+<div class="container">
+  <div>
+    <button class="btn btn-primary" ng-click="getRandomPet()">Look Up Kitty!</button>
+  </div>
+  <div>
+    <h2>{{pet.name.$t}}</h2>
+    <p>{{pet.description.$t}}</p>
+    <img ng-src="{{pet.media.photos.photo[2].$t}}" />
+  </div>
+</div>
