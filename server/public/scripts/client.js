@@ -121,6 +121,7 @@ myApp.controller("ShelterController", ["$scope", "$http", function($scope, $http
       $scope.shelter = response.data.petfinder.shelters.shelter;
       console.log(response.data.petfinder.shelters.shelter);
 
+
     });
 
   }
