@@ -17,6 +17,11 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: 'PigsController',
       controllerAs: 'dogs'
     })
+    .when('/shelter' ,{
+      templateUrl: '/views/templates/shelter.html',
+      controller: 'ShelterController',
+      controllerAs: 'shelter'
+    })
     .otherwise({
       redirectTo: 'CatsController'
     });
@@ -94,4 +99,30 @@ myApp.controller("PigsController", ["$scope", "$http", function($scope, $http) {
 
   }
 
+}]);
+
+myApp.controller("ShelterController", ["$scope", "$http", function($scope, $http) {
+  var key = 'bf920036393de118071fd436b3a5f8d0';
+  var baseURL = 'http://api.petfinder.com/';
+
+  $scope.findShelter = function() {
+    var query = baseURL + 'shelter.find';
+    query += '?key=' + key;
+    query += '&location=55404';
+    query += '&output=basic';
+    query += '&format=json';
+
+
+    console.log('query: ', query);
+
+    var request = encodeURI(query) + '&callback=JSON_CALLBACK';
+
+    $http.jsonp(request).then(function(response) {
+      $scope.shelter = response.data.petfinder.shelters.shelter;
+      console.log(response.data.petfinder.shelters.shelter);
+
+    });
+
+  }
+  $scope.findShelter();
 }]);

@@ -1,0 +1,10 @@
+<h1>Find a Shelter!</h1>
+
+<div class="container">
+  <div>
+    <button class="btn btn-primary" ng-click="findShelter()">Look Up a Shelter!</button>
+  </div>
+  <div>
+    <h2 ng-repeat="shelters in shelter">{{shelters.name.$t}}</h2>
+  </div>
+</div>
