@@ -7,21 +7,16 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: 'CatsController',
       controllerAs: 'cats'
     })
-    .when('/dogs' ,{
-      templateUrl: '/views/templates/dogs.html',
-      controller: 'DogsController',
-      controllerAs: 'dogs'
-    })
-    .when('/pigs' ,{
-      templateUrl: '/views/templates/pigs.html',
-      controller: 'PigsController',
-      controllerAs: 'dogs'
-    })
-    .when('/shelter' ,{
-      templateUrl: '/views/templates/shelter.html',
-      controller: 'ShelterController',
-      controllerAs: 'shelter'
-    })
+    // .when('/dogs' ,{
+    //   templateUrl: '/views/templates/dogs.html',
+    //   controller: 'DogsController',
+    //   controllerAs: 'dogs'
+    // })
+    // .when('/pigs' ,{
+    //   templateUrl: '/views/templates/pigs.html',
+    //   controller: 'PigsController',
+    //   controllerAs: 'dogs'
+    // })
     .otherwise({
       redirectTo: 'CatsController'
     });
@@ -30,15 +25,15 @@ myApp.config(['$routeProvider', function($routeProvider) {
 
 
 myApp.controller("CatsController", ["$scope", "$http", function($scope, $http) {
-  var key = 'bf920036393de118071fd436b3a5f8d0';
-  var baseURL = 'http://api.petfinder.com/';
+  var candidateID = 'c11b6475-0d0d-4bac-aece-2e12d42980ed';
+  var baseURL = 'https://animalrestapi.azurewebsites.net/';
 
   $scope.getRandomPet = function() {
-    var query = baseURL + 'pet.getRandom';
-    query += '?key=' + key;
-    query += '&animal=cat';
-    query += '&output=basic';
-    query += '&format=json';
+    var query = baseURL;
+    query += '?key=' + candidateID;
+    // query += '&animal=cat';
+    // query += '&output=basic';
+    // query += '&format=json';
 
     console.log('query: ', query);
 
@@ -53,77 +48,77 @@ myApp.controller("CatsController", ["$scope", "$http", function($scope, $http) {
 
 }]);
 
-myApp.controller("DogsController", ["$scope", "$http", function($scope, $http) {
-  var key = 'bf920036393de118071fd436b3a5f8d0';
-  var baseURL = 'http://api.petfinder.com/';
+// myApp.controller("DogsController", ["$scope", "$http", function($scope, $http) {
+//   var candidateID = 'c11b6475-0d0d-4bac-aece-2e12d42980ed';
+//   var baseURL = 'https://animalrestapi.azurewebsites.net/';
+//
+//   $scope.getRandomPet = function() {
+//     var query = baseURL + 'animal.commonName';
+//     query += '?key=' + candidateID;
+//     query += '&animal=dog';
+//     query += '&output=basic';
+//     query += '&format=json';
+//
+//     console.log('query: ', query);
+//
+//     var request = encodeURI(query) + '&callback=JSON_CALLBACK';
+//
+//     $http.jsonp(request).then(function(response) {
+//       $scope.pet = response.data.petfinder.pet;
+//
+//     });
+//
+//   }
+//
+// }]);
+//
+// myApp.controller("PigsController", ["$scope", "$http", function($scope, $http) {
+//   var key = 'c11b6475-0d0d-4bac-aece-2e12d42980ed';
+//   var baseURL = 'https://animalrestapi.azurewebsites.net/';
+//
+//   $scope.getRandomPet = function() {
+//     var query = baseURL + 'pet.getRandom';
+//     query += '?key=' + candidateID;
+//     query += '&animal=pig';
+//     query += '&output=basic';
+//     query += '&format=json';
+//
+//     console.log('query: ', query);
+//
+//     var request = encodeURI(query) + '&callback=JSON_CALLBACK';
+//
+//     $http.jsonp(request).then(function(response) {
+//       $scope.pet = response.data.petfinder.pet;
+//
+//     });
+//
+//   }
+//
+// }]);
 
-  $scope.getRandomPet = function() {
-    var query = baseURL + 'pet.getRandom';
-    query += '?key=' + key;
-    query += '&animal=dog';
-    query += '&output=basic';
-    query += '&format=json';
-
-    console.log('query: ', query);
-
-    var request = encodeURI(query) + '&callback=JSON_CALLBACK';
-
-    $http.jsonp(request).then(function(response) {
-      $scope.pet = response.data.petfinder.pet;
-
-    });
-
-  }
-
-}]);
-
-myApp.controller("PigsController", ["$scope", "$http", function($scope, $http) {
-  var key = 'bf920036393de118071fd436b3a5f8d0';
-  var baseURL = 'http://api.petfinder.com/';
-
-  $scope.getRandomPet = function() {
-    var query = baseURL + 'pet.getRandom';
-    query += '?key=' + key;
-    query += '&animal=pig';
-    query += '&output=basic';
-    query += '&format=json';
-
-    console.log('query: ', query);
-
-    var request = encodeURI(query) + '&callback=JSON_CALLBACK';
-
-    $http.jsonp(request).then(function(response) {
-      $scope.pet = response.data.petfinder.pet;
-
-    });
-
-  }
-
-}]);
-
-myApp.controller("ShelterController", ["$scope", "$http", function($scope, $http) {
-  var key = 'bf920036393de118071fd436b3a5f8d0';
-  var baseURL = 'http://api.petfinder.com/';
-
-  $scope.findShelter = function() {
-    var query = baseURL + 'shelter.find';
-    query += '?key=' + key;
-    query += '&location=55404';
-    query += '&output=basic';
-    query += '&format=json';
-
-
-    console.log('query: ', query);
-
-    var request = encodeURI(query) + '&callback=JSON_CALLBACK';
-
-    $http.jsonp(request).then(function(response) {
-      $scope.shelter = response.data.petfinder.shelters.shelter;
-      console.log(response.data.petfinder.shelters.shelter);
-
-
-    });
-
-  }
-  $scope.findShelter();
-}]);
+// myApp.controller("ShelterController", ["$scope", "$http", function($scope, $http) {
+//   var key = 'bf920036393de118071fd436b3a5f8d0';
+//   var baseURL = 'http://api.petfinder.com/';
+//
+//   $scope.findShelter = function() {
+//     var query = baseURL + 'shelter.find';
+//     query += '?key=' + key;
+//     query += '&location=55404';
+//     query += '&output=basic';
+//     query += '&format=json';
+//
+//
+//     console.log('query: ', query);
+//
+//     var request = encodeURI(query) + '&callback=JSON_CALLBACK';
+//
+//     $http.jsonp(request).then(function(response) {
+//       $scope.shelter = response.data.petfinder.shelters.shelter;
+//       console.log(response.data.petfinder.shelters.shelter);
+//
+//
+//     });
+//
+//   }
+//   $scope.findShelter();
+// }]);
